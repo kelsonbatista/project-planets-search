@@ -1,11 +1,10 @@
 import React, { useContext } from 'react';
 import { Table } from 'react-bootstrap';
-import PlanetsContext from '../../context/context';
+import Context from '../../context/MyContext';
 import './style.css';
 
-function TableComp() {
-  const { data: { results } } = useContext(PlanetsContext);
-  console.log(results, 'results');
+function TableApp() {
+  const { filteredData } = useContext(Context);
 
   return (
     <Table striped bordered hover responsive size="sm" variant="dark">
@@ -28,7 +27,7 @@ function TableComp() {
       </thead>
       <tbody>
         {/* Optional Chaining - https://www.freecodecamp.org/news/how-the-question-mark-works-in-javascript/ */}
-        {results?.map((planet, index) => (
+        {filteredData.map((planet, index) => (
           <tr key={ index }>
             <td>{ planet.name }</td>
             <td>{ planet.rotation_period }</td>
@@ -50,4 +49,4 @@ function TableComp() {
   );
 }
 
-export default TableComp;
+export default TableApp;

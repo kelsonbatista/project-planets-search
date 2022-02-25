@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../../components/Header';
-import Form from '../../components/Form';
-import TableComp from '../../components/Table';
+import FormApp from '../../components/FormApp';
+import TableApp from '../../components/TableApp';
 import './style.css';
 
 function Home() {
@@ -10,10 +10,10 @@ function Home() {
       <Header />
       <main>
         <section className="form">
-          <Form />
+          <FormApp />
         </section>
         <section className="table">
-          <TableComp />
+          <TableApp />
         </section>
       </main>
     </>
