@@ -1,0 +1,8 @@
+.table {
+  color: white;
+  font-size: 0.8rem;
+}
+
+th, td {
+  vertical-align: middle;
+}
