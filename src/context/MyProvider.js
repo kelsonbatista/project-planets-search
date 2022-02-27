@@ -6,7 +6,8 @@ import MyContext from './MyContext';
 function MyProvider({ children }) {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [name, setName] = useState('');
+  const [filterByName, setFilterByName] = useState('');
+  const [filterByNumericValues, setFilterByNumericValues] = useState([]);
 
   async function handlePlanets() {
     const { results } = await fetchPlanetsApi();
@@ -14,26 +15,53 @@ function MyProvider({ children }) {
     setFilteredData(results);
   }
 
-  const value = {
-    data,
-    filteredData,
-    filterByName: { name },
-    functions: { setName },
-  };
+  // console.log(Number(planet[column]) > (value), Number(planet[column]), column, comparison, value);
+
+  function checkFilterByNumeric(planet) {
+    const { column, comparison, value } = filterByNumericValues[0];
+    switch (comparison) {
+    case 'maior que':
+      return (Number(planet[column]) > Number(value));
+    case 'menor que':
+      return (Number(planet[column]) < Number(value));
+    default:
+      return (Number(planet[column]) === Number(value));
+    }
+  }
 
   useEffect(() => {
     handlePlanets();
   }, []);
 
   useEffect(() => {
-    console.log(name.toLowerCase(), 'name');
+    console.log(filterByName.toLowerCase(), 'name');
     setFilteredData(data.filter((planet) => (
-      ((planet.name).toLowerCase()).includes(name.toLowerCase())
+      ((planet.name).toLowerCase()).includes(filterByName.toLowerCase())
     )));
-  }, [name]);
+    console.log(filteredData);
+  }, [filterByName]);
+
+  useEffect(() => {
+    setFilteredData(data.filter((planet) => (
+      checkFilterByNumeric(planet)
+    )));
+    console.log(filteredData, 'filtereddata');
+    console.log(filterByNumericValues, 'filterByNumericValues');
+  }, [filterByNumericValues]);
+
+  const allData = {
+    data,
+    filteredData,
+    filterByName: { filterByName },
+    filterByNumericValues,
+    functions: {
+      setFilterByName,
+      setFilterByNumericValues,
+    },
+  };
 
   return (
-    <MyContext.Provider value={ value }>
+    <MyContext.Provider value={ allData }>
       { children }
     </MyContext.Provider>
   );

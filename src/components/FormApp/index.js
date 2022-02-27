@@ -1,26 +1,13 @@
-import React, { useContext } from 'react';
-import { Form } from 'react-bootstrap';
-import MyContext from '../../context/MyContext';
+import React from 'react';
+import FilterByName from '../FilterByName';
+import FilterByNumericValues from '../FilterByNumericValues';
 
 function FormApp() {
-  const {
-    filterByName: { name },
-    functions: { setName },
-  } = useContext(MyContext);
-
   return (
-    <Form>
-      <Form.Group className="mb-3" controlId="planetName">
-        <Form.Label>Planet Name</Form.Label>
-        <Form.Control
-          data-testid="name-filter"
-          onChange={ ({ target }) => setName(target.value) }
-          placeholder="Type the planet name"
-          type="text"
-          value={ name }
-        />
-      </Form.Group>
-    </Form>
+    <>
+      <FilterByName />
+      <FilterByNumericValues />
+    </>
   );
 }
 
