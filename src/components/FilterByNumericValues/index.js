@@ -11,24 +11,22 @@ function FilterByNumericValues() {
     columnsIn,
     columnsOut,
     filterByNumericValues,
-    functions: { setColumnsIn, setColumnsOut, setFilterByNumericValues, setRemoveFilter },
+    functions: { setColumnsIn, setColumnsOut, setFilterByNumericValues },
   } = useContext(MyContext);
 
   function handleFilterByNumericValues(event) {
     event.preventDefault();
     setFilterByNumericValues([...filterByNumericValues,
       { column, comparison, value }]);
-    setRemoveFilter(false);
     const newColumnsOut = columnsIn.filter((col) => col.name === column);
     setColumnsOut(columnsOut.concat(newColumnsOut));
     const newColumnsIn = columnsIn.filter((col) => col.name !== column);
     setColumnsIn(newColumnsIn);
   }
 
-  function handleRemoveAllFilters(event) {
+  function handleResetFilters(event) {
     event.preventDefault();
-    setRemoveFilter(true);
-    setColumnsIn(columnsIn.concat(...columnsOut));
+    setColumnsIn([...columnsIn, ...columnsOut]);
     setColumnsOut([]);
     setFilterByNumericValues([]);
   }
@@ -78,7 +76,7 @@ function FilterByNumericValues() {
         <Button
           className="filter__removeAll"
           data-testid="button-remove-filters"
-          onClick={ (event) => handleRemoveAllFilters(event) }
+          onClick={ (event) => handleResetFilters(event) }
           type="submit"
           variant="danger"
         >

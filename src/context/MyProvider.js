@@ -19,12 +19,12 @@ function MyProvider({ children }) {
   ]);
   const [columnsOut, setColumnsOut] = useState([]);
   const [data, setData] = useState([]);
-  const [removeFilter, setRemoveFilter] = useState(false);
-  const [filterBar, setFilterBar] = useState({ filterName: [], filterPosition: [] });
   const [filterByName, setFilterByName] = useState('');
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [removeFilter, setRemoveFilter] = useState(false);
   let filteredIndex = 0;
+  const [count, setCount] = useState(0);
 
   async function handlePlanets() {
     const { results } = await fetchPlanetsApi();
@@ -43,6 +43,23 @@ function MyProvider({ children }) {
       return (Number(planet[filter.column]) === Number(filter.value));
     }
   }
+  useEffect(() => {
+    // if (removeFilter) {
+    //   setFilteredData(() => [...data]);
+    //   // handlePlanets();
+    //   console.log('entrou remove filter');
+    //   setRemoveFilter(() => false);
+    // }
+    while (filteredIndex < filterByNumericValues.length) {
+      const index = filteredIndex;
+      const newData = filteredData.filter((planet) => (
+        checkFilterByNumeric(planet, index)
+      ));
+      filteredIndex += 1;
+      setFilteredData(() => (newData));
+      setCount((prev) => prev + 1);
+    }
+  }, [filterByNumericValues]);
 
   useEffect(() => {
     handlePlanets();
@@ -59,22 +76,11 @@ function MyProvider({ children }) {
     )));
   }, [filterByName]);
 
-  useEffect(() => {
-    while (filteredIndex < filterByNumericValues.length) {
-      const index = filteredIndex;
-      const newData = filteredData.filter((planet) => (
-        checkFilterByNumeric(planet, index)
-      ));
-      filteredIndex += 1;
-      setFilteredData(newData);
-    }
-  }, [filterByNumericValues]);
-
   const allData = {
     columnsIn,
     columnsOut,
+    count,
     data,
-    filterBar,
     filterByName: { filterByName },
     filterByNumericValues,
     filteredData,
@@ -83,7 +89,6 @@ function MyProvider({ children }) {
       handlePlanets,
       setColumnsIn,
       setColumnsOut,
-      setFilterBar,
       setFilterByName,
       setFilterByNumericValues,
       setFilteredData,

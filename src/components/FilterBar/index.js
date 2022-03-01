@@ -7,6 +7,7 @@ function FilterBar() {
   const {
     columnsIn,
     columnsOut,
+    count,
     data,
     filterByNumericValues,
     functions: { setColumnsIn, setColumnsOut, setFilterByNumericValues,
@@ -14,7 +15,7 @@ function FilterBar() {
   } = useContext(MyContext);
 
   function handleRemoveFilter({ target }) {
-    setRemoveFilter(true);
+    setRemoveFilter(() => true);
     const newColumnsIn = columnsOut.filter((col) => col.name === target.name);
     setColumnsIn(columnsIn.concat(newColumnsIn));
     const newColumnsOut = columnsOut.filter((col) => col.name !== target.name);
@@ -31,6 +32,7 @@ function FilterBar() {
 
   return (
     <section className="filter__bar">
+      { count }
       {filterByNumericValues.map((filter, index) => (
         <Button
           className="filter__text"
