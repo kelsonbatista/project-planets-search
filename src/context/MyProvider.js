@@ -4,6 +4,7 @@ import fetchPlanetsApi from '../services/planetsApi';
 import MyContext from './MyContext';
 
 function MyProvider({ children }) {
+  const MINUS_ONE = -1;
   const ZERO = 0;
   const ONE = 1;
   const TWO = 2;
@@ -17,18 +18,12 @@ function MyProvider({ children }) {
     { name: 'surface_water', position: FOUR },
   ]);
   const [columnsOut, setColumnsOut] = useState([]);
-  // const [columns, setColumns] = useState({
-  //   current: [{}]
-  //     ['population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'],
-  //   columnPosition: [ZERO, ONE, TWO, THREE, FOUR],
-  // });
   const [data, setData] = useState([]);
   const [removeFilter, setRemoveFilter] = useState(false);
   const [filterBar, setFilterBar] = useState({ filterName: [], filterPosition: [] });
   const [filterByName, setFilterByName] = useState('');
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
-  const [filteredDataRev, setFilteredDataRev] = useState([]);
   let filteredIndex = 0;
 
   async function handlePlanets() {
@@ -36,21 +31,6 @@ function MyProvider({ children }) {
     setData(results);
     setFilteredData(results);
   }
-
-  // console.log(Number(planet[column]) > (value), Number(planet[column]), column, comparison, value);
-
-  // function checkFilterByNumeric(planet) {
-  //   const { column, comparison, value } = filterByNumericValues[0];
-  //   // setFilterBar({ ...filterBar, filterName, filterPosition });
-  //   switch (comparison) {
-  //   case 'maior que':
-  //     return (Number(planet[column]) > Number(value));
-  //   case 'menor que':
-  //     return (Number(planet[column]) < Number(value));
-  //   default:
-  //     return (Number(planet[column]) === Number(value));
-  //   }
-  // }
 
   function checkFilterByNumeric(planet, index) {
     const filter = filterByNumericValues[index];
@@ -69,7 +49,7 @@ function MyProvider({ children }) {
   }, []);
 
   useEffect(() => {
-    columnsIn.sort((a, b) => (a.position > b.position ? 1 : -1));
+    columnsIn.sort((a, b) => (a.position > b.position ? ONE : MINUS_ONE));
   }, [columnsIn]);
 
   useEffect(() => {
@@ -89,17 +69,6 @@ function MyProvider({ children }) {
       setFilteredData(newData);
     }
   }, [filterByNumericValues]);
-
-  // useEffect(() => {
-  //   if (filterByNumericValues.length > 0) {
-  //     const filteredDataCopy = [...filteredData];
-  //     setFilteredData(filteredDataCopy.filter((planet) => (
-  //       checkFilterByNumeric(planet)
-  //     )));
-  //   } else {
-  //     setFilteredData(data.filter((planet) => planet));
-  //   }
-  // }, [filterByNumericValues]);
 
   const allData = {
     columnsIn,
