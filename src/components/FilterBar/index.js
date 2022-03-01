@@ -5,18 +5,17 @@ import './style.css';
 
 function FilterBar() {
   const {
-    columns,
+    columnsIn,
+    columnsOut,
     data,
     dataCopy1,
     filterBar,
     filterByNumericValues,
     filteredData,
-    functions: { handlePlanets, setColumns, setDataCopy1, setFilterBar, setFilterByNumericValues, setFilteredData, setRemoveFilter },
+    functions: { handlePlanets, setColumnsIn, setColumnsOut, setDataCopy1, setFilterBar, setFilterByNumericValues, setFilteredData, setRemoveFilter },
   } = useContext(MyContext);
-  const { columnName, columnPosition } = columns;
+  // const { columnName, columnPosition } = columns;
   const { filterName, filterPosition } = filterBar;
-  
-
 
   function handleRemoveFilter({ target }) {
     // const filterIndex = filterName.indexOf(target.name);
@@ -25,6 +24,12 @@ function FilterBar() {
     // ));
     // handlePlanets();
     setRemoveFilter(true);
+    const newColumnsIn = columnsOut.filter((col) => col.name === target.name);
+    setColumnsIn(columnsIn.concat(newColumnsIn));
+    const newColumnsOut = columnsOut.filter((col) => col.name !== target.name);
+    setColumnsOut(newColumnsOut);
+
+
     const newData = filterByNumericValues.filter((filter) => filter.column !== target.name);
 
     // filteredIndex += 1;

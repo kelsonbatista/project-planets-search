@@ -7,15 +7,16 @@ function FilterByNumericValues() {
   const [comparison, setComparisonField] = useState('maior que');
   const [value, setNumberField] = useState(0);
   const {
-    columns,
+    columnsIn,
+    columnsOut,
     data,
     dataCopy,
     filterBar,
     filterByNumericValues,
     filteredData,
-    functions: { handlePlanets, setColumns, setDataCopy, setFilterBar, setFilterByNumericValues, setFilteredData, setRemoveFilter },
+    functions: { handlePlanets, setColumnsIn, setColumnsOut, setDataCopy, setFilterBar, setFilterByNumericValues, setFilteredData, setRemoveFilter },
   } = useContext(MyContext);
-  const { columnName, columnPosition } = columns;
+  // const { columnName, columnPosition } = columnsIn;
   const { filterName, filterPosition } = filterBar;
   let filteredIndex = 0;
 
@@ -71,11 +72,13 @@ function FilterByNumericValues() {
     //   filterName: filterName.concat(newFilterName),
     //   filterPosition: filterPosition.concat(newFilterPosition),
     // });
-    // setColumns({
-    //   ...columns,
-    //   columnName,
-    //   columnPosition,
-    // });
+    // const columnIndex = columnName.indexOf(column);
+    // columnName.splice(columnIndex, 1);
+    // columnPosition.splice(columnIndex, 1)
+    const newColumnsOut = columnsIn.filter((col) => col.name === column);
+    setColumnsOut(columnsOut.concat(newColumnsOut));
+    const newColumnsIn = columnsIn.filter((col) => col.name !== column);
+    setColumnsIn(newColumnsIn);
   }
 
   // useEffect(() => {
@@ -110,8 +113,8 @@ function FilterByNumericValues() {
           onChange={ ({ target }) => setColumnField(target.value) }
           value={ column }
         >
-          {columnName.map((aColumn, index) => (
-            <option key={ index } value={ aColumn }>{ aColumn }</option>
+          {columnsIn.map(({ name }, index) => (
+            <option key={ index } value={ name }>{ name }</option>
           ))}
         </Form.Select>
         <Form.Label>Condition</Form.Label>

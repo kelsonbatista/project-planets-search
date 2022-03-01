@@ -9,17 +9,26 @@ function MyProvider({ children }) {
   const TWO = 2;
   const THREE = 3;
   const FOUR = 4;
-  const [columns, setColumns] = useState({
-    columnName:
-      ['population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'],
-    columnPosition: [ZERO, ONE, TWO, THREE, FOUR],
-  });
+  const [columnsIn, setColumnsIn] = useState([
+    { name: 'population', position: ZERO },
+    { name: 'orbital_period', position: ONE },
+    { name: 'diameter', position: TWO },
+    { name: 'rotation_period', position: THREE },
+    { name: 'surface_water', position: FOUR },
+  ]);
+  const [columnsOut, setColumnsOut] = useState([]);
+  // const [columns, setColumns] = useState({
+  //   current: [{}]
+  //     ['population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'],
+  //   columnPosition: [ZERO, ONE, TWO, THREE, FOUR],
+  // });
   const [data, setData] = useState([]);
   const [removeFilter, setRemoveFilter] = useState(false);
   const [filterBar, setFilterBar] = useState({ filterName: [], filterPosition: [] });
   const [filterByName, setFilterByName] = useState('');
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [filteredDataRev, setFilteredDataRev] = useState([]);
   let filteredIndex = 0;
 
   async function handlePlanets() {
@@ -60,6 +69,10 @@ function MyProvider({ children }) {
   }, []);
 
   useEffect(() => {
+    columnsIn.sort((a, b) => (a.position > b.position ? 1 : -1));
+  }, [columnsIn]);
+
+  useEffect(() => {
     console.log(filterByName.toLowerCase(), 'name');
     setFilteredData(data.filter((planet) => (
       ((planet.name).toLowerCase()).includes(filterByName.toLowerCase())
@@ -89,7 +102,8 @@ function MyProvider({ children }) {
   // }, [filterByNumericValues]);
 
   const allData = {
-    columns,
+    columnsIn,
+    columnsOut,
     data,
     filterBar,
     filterByName: { filterByName },
@@ -98,7 +112,8 @@ function MyProvider({ children }) {
     removeFilter,
     functions: {
       handlePlanets,
-      setColumns,
+      setColumnsIn,
+      setColumnsOut,
       setFilterBar,
       setFilterByName,
       setFilterByNumericValues,
