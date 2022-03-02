@@ -1,13 +1,11 @@
 import React from 'react';
-import FilterByName from '../FilterByName';
-import FilterByNumericValues from '../FilterByNumericValues';
+import FilterForm from '../FilterForm';
 import FilterBar from '../FilterBar';
 
 function FormApp() {
   return (
     <>
-      <FilterByName />
-      <FilterByNumericValues />
+      <FilterForm />
       <FilterBar />
     </>
   );

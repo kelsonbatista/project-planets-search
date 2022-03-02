@@ -22,14 +22,21 @@ function MyProvider({ children }) {
   const [filterByName, setFilterByName] = useState('');
   const [filterByNumericValues, setFilterByNumericValues] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
+  const [order, setOrder] = useState({ column: 'population', sort: 'ASC' });
   const [removeFilter, setRemoveFilter] = useState(false);
   let filteredIndex = 0;
   const [count, setCount] = useState(0);
 
   async function handlePlanets() {
     const { results } = await fetchPlanetsApi();
-    setData(results);
-    setFilteredData(results);
+    const newData = results.sort((a, b) => {
+      a = a.name || '';
+      b = b.name || '';
+      return a.localeCompare(b);
+    });
+    if (newData.length > 0) console.log(typeof newData.name, 'type of');
+    setData(newData);
+    setFilteredData(newData);
   }
 
   function checkFilterByNumeric(planet, index) {
@@ -52,7 +59,7 @@ function MyProvider({ children }) {
     // }
     while (filteredIndex < filterByNumericValues.length) {
       const index = filteredIndex;
-      const newData = filteredData.filter((planet) => (
+      const newData = [...filteredData].filter((planet) => (
         checkFilterByNumeric(planet, index)
       ));
       filteredIndex += 1;
@@ -84,6 +91,7 @@ function MyProvider({ children }) {
     filterByName: { filterByName },
     filterByNumericValues,
     filteredData,
+    order,
     removeFilter,
     functions: {
       handlePlanets,
@@ -92,6 +100,7 @@ function MyProvider({ children }) {
       setFilterByName,
       setFilterByNumericValues,
       setFilteredData,
+      setOrder,
       setRemoveFilter,
     },
   };
