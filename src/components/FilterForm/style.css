@@ -52,4 +52,12 @@ form {
     min-width: 120px;
     width: 130px;
   }
+
+  .filter__sort {
+    width: 10%;
+  }
+  
+  .filter__sortColumn {
+    width: 60%;
+  }
 }

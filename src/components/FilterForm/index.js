@@ -41,12 +41,20 @@ function FilterForm() {
     const { column: columnOrder, sort } = order;
     const newData = filteredData.sort((a, b) => (
       (sort === 'ASC')
-        ? a[columnOrder].localeCompare(b[columnOrder])
-        : b[columnOrder].localeCompare(a[columnOrder])
+        ? a[columnOrder].localeCompare(b[columnOrder], undefined, { numeric: true })
+        : b[columnOrder].localeCompare(a[columnOrder], undefined, { numeric: true })
     ));
+
+    const newData1 = [];
+    const unknown = [];
+    newData.forEach((data) => (
+      (data[columnOrder] === 'unknown')
+        ? unknown.push(data)
+        : newData1.push(data)
+    ));
+    const newData2 = [...newData1, ...unknown];
     setOrder({ column: 'population', sort: 'ASC' });
-    setFilteredData(() => (newData));
-    console.log(filteredData, 'filtered');
+    setFilteredData(() => (newData2));
   }
 
   return (
