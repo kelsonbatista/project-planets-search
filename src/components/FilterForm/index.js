@@ -54,7 +54,7 @@ function FilterForm() {
     ));
     const newData2 = [...newData1, ...unknown];
     setOrder({ column: 'population', sort: 'ASC' });
-    setFilteredData(() => (newData2));
+    setFilteredData(() => (newData2)); // modifica filtro
   }
 
   return (
