@@ -39,7 +39,8 @@ form {
   width: 160px;
 }
 
-@media only screen and (max-width: 1024px) {
+@media only screen and ( max-width : 1024px ) {
+
   form {
     display: block;
   }
@@ -56,7 +57,7 @@ form {
   .filter__sort {
     width: 10%;
   }
-  
+
   .filter__sortColumn {
     width: 60%;
   }
