@@ -14,6 +14,8 @@ Esse projeto é uma lista com filtros de planetas do universo de Star Wars com u
 * Utilização do _React Hook useEffect_;
 * Customização de _React Hooks_.
 
+---
+
 * Javascript, HTML, CSS
 * Use of _Context API_ from **React** for state management.
 * Use of _React Hook useState_;
