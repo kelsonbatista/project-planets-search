@@ -16,7 +16,7 @@ This project is a filter list of planets from the Star Wars universe using **Con
 
 ---
 
-* - Javascript, HTML, CSS
+  - Javascript, HTML, CSS
   - Utilização da _Context API_ do **React** para gerenciar estado.
   - Utilização do _React Hook useState_;
   - Utilização do _React Hook useContext_;
