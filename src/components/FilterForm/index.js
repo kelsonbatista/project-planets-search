@@ -18,10 +18,11 @@ function FilterForm() {
       setFilteredData, setOrder },
   } = useContext(MyContext);
 
-  function handleFilterForm(event) {
+  function handleAddFilter(event) {
     event.preventDefault();
     setFilterByNumericValues([...filterByNumericValues,
       { column, comparison, value }]);
+
     const newColumnsOut = columnsIn.filter((col) => col.name === column);
     setColumnsOut(columnsOut.concat(newColumnsOut));
     const newColumnsIn = columnsIn.filter((col) => col.name !== column);
@@ -34,8 +35,7 @@ function FilterForm() {
     setColumnsOut([]);
     setFilterByNumericValues([]);
   }
-  // (sort === 'ASC')
-  // a[columnOrder].localeCompare(b[columnOrder])
+
   function handleOrder(event) {
     event.preventDefault();
     const { column: columnOrder, sort } = order;
@@ -111,7 +111,7 @@ function FilterForm() {
         <Button
           className="filter__remove"
           data-testid="button-filter"
-          onClick={ (event) => handleFilterForm(event) }
+          onClick={ (event) => handleAddFilter(event) }
           type="submit"
           variant="warning"
         >

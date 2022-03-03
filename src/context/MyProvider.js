@@ -34,7 +34,7 @@ function MyProvider({ children }) {
       b = b.name || '';
       return a.localeCompare(b);
     });
-    if (newData.length > 0) console.log(typeof newData.name, 'type of');
+    // if (newData.length > 0) console.log(typeof newData.name, 'type of');
     setData(newData);
     setFilteredData(newData);
   }
@@ -50,22 +50,24 @@ function MyProvider({ children }) {
       return (Number(planet[filter.column]) === Number(filter.value));
     }
   }
-  useEffect(() => {
-    // if (removeFilter) {
-    //   setFilteredData(() => [...data]);
-    //   // handlePlanets();
-    //   console.log('entrou remove filter');
-    //   setRemoveFilter(() => false);
-    // }
+
+  function handleUpdate(remove) {
+    if (filterByNumericValues.length === 0) setFilteredData(() => [...data]);
     while (filteredIndex < filterByNumericValues.length) {
       const index = filteredIndex;
-      const newData = [...filteredData].filter((planet) => (
+      const sourceData = remove ? [...data] : [...filteredData];
+      const newData = sourceData.filter((planet) => (
         checkFilterByNumeric(planet, index)
       ));
       filteredIndex += 1;
       setFilteredData(() => (newData));
       setCount((prev) => prev + 1);
     }
+  }
+
+  useEffect(() => {
+    if (removeFilter === true) return handleUpdate('remove');
+    handleUpdate();
   }, [filterByNumericValues]);
 
   useEffect(() => {
@@ -95,6 +97,7 @@ function MyProvider({ children }) {
     removeFilter,
     functions: {
       handlePlanets,
+      handleUpdate,
       setColumnsIn,
       setColumnsOut,
       setFilterByName,
