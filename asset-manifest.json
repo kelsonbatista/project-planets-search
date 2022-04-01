@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/project-planets-search/static/css/main.55d66a38.chunk.css",
+    "main.js": "/project-planets-search/static/js/main.9cc7c26c.chunk.js",
+    "main.js.map": "/project-planets-search/static/js/main.9cc7c26c.chunk.js.map",
+    "runtime-main.js": "/project-planets-search/static/js/runtime-main.e969bfb9.js",
+    "runtime-main.js.map": "/project-planets-search/static/js/runtime-main.e969bfb9.js.map",
+    "static/js/2.f5fb32fe.chunk.js": "/project-planets-search/static/js/2.f5fb32fe.chunk.js",
+    "static/js/2.f5fb32fe.chunk.js.map": "/project-planets-search/static/js/2.f5fb32fe.chunk.js.map",
+    "index.html": "/project-planets-search/index.html",
+    "precache-manifest.ff7722c81b85cd1109661dff212e8ab1.js": "/project-planets-search/precache-manifest.ff7722c81b85cd1109661dff212e8ab1.js",
+    "service-worker.js": "/project-planets-search/service-worker.js",
+    "static/css/main.55d66a38.chunk.css.map": "/project-planets-search/static/css/main.55d66a38.chunk.css.map",
+    "static/js/2.f5fb32fe.chunk.js.LICENSE.txt": "/project-planets-search/static/js/2.f5fb32fe.chunk.js.LICENSE.txt",
+    "static/media/starwars1.png": "/project-planets-search/static/media/starwars1.0cf7e1d8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.e969bfb9.js",
+    "static/js/2.f5fb32fe.chunk.js",
+    "static/css/main.55d66a38.chunk.css",
+    "static/js/main.9cc7c26c.chunk.js"
+  ]
+}
