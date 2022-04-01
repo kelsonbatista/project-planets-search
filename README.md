@@ -26,7 +26,7 @@ This project is a filter list of planets from the Star Wars universe using **Con
 ---
 # Layout
 
-<img src="intro.gif" alt="Project Planets Search" style="height: 80%; width:80%;"/>
+<img src="intro.gif" alt="Project Planets Search" style="height: 100%; width:100%;"/>
 
 ---
 # Deployment / *Implantação*
