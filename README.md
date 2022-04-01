@@ -21,11 +21,11 @@ This project is a filter list of planets from the Star Wars universe using **Con
   - Utilização do _React Hook useState_;
   - Utilização do _React Hook useContext_;
   - Utilização do _React Hook useEffect_;
-  - Customização de _React Hooks_.*
+  - Customização de _React Hooks_.
 
 ---
 # Deployment / *Implantação*
 
-## <a href="https://kelsonbatista.github.io/project-planets-search/" target="_blank">https://kelsonbatista.github.io/project-planets-search/</a>
+## [https://kelsonbatista.github.io/project-planets-search/] (https://kelsonbatista.github.io/project-planets-search/)
 
 
