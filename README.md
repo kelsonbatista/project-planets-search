@@ -24,6 +24,11 @@ This project is a filter list of planets from the Star Wars universe using **Con
   - Customização de _React Hooks_.
 
 ---
+# Layout
+
+<img src="intro.gif" alt="Project Planets Search" style="height: 80%; width:80%;"/>
+
+---
 # Deployment / *Implantação*
 
 See it in action/ **Veja em ação**: [https://kelsonbatista.github.io/project-planets-search/](https://kelsonbatista.github.io/project-planets-search/)
