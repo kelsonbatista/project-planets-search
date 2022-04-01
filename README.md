@@ -26,6 +26,6 @@ This project is a filter list of planets from the Star Wars universe using **Con
 ---
 # Deployment / *Implantação*
 
-<a href="https://kelsonbatista.github.io/project-planets-search/" target="_blank">https://kelsonbatista.github.io/project-planets-search/</a>
+See it in action/ **Veja em ação**: [https://kelsonbatista.github.io/project-planets-search/](https://kelsonbatista.github.io/project-planets-search/)
 
 
