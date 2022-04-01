@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/projects/17-sd-017-project-starwars-planets-search/static/css/main.55d66a38.chunk.css",
+    "main.js": "/projects/17-sd-017-project-starwars-planets-search/static/js/main.9cc7c26c.chunk.js",
+    "main.js.map": "/projects/17-sd-017-project-starwars-planets-search/static/js/main.9cc7c26c.chunk.js.map",
+    "runtime-main.js": "/projects/17-sd-017-project-starwars-planets-search/static/js/runtime-main.1299341e.js",
+    "runtime-main.js.map": "/projects/17-sd-017-project-starwars-planets-search/static/js/runtime-main.1299341e.js.map",
+    "static/js/2.f5fb32fe.chunk.js": "/projects/17-sd-017-project-starwars-planets-search/static/js/2.f5fb32fe.chunk.js",
+    "static/js/2.f5fb32fe.chunk.js.map": "/projects/17-sd-017-project-starwars-planets-search/static/js/2.f5fb32fe.chunk.js.map",
+    "index.html": "/projects/17-sd-017-project-starwars-planets-search/index.html",
+    "precache-manifest.2a32cb02fa219a228996a692ffce34f9.js": "/projects/17-sd-017-project-starwars-planets-search/precache-manifest.2a32cb02fa219a228996a692ffce34f9.js",
+    "service-worker.js": "/projects/17-sd-017-project-starwars-planets-search/service-worker.js",
+    "static/css/main.55d66a38.chunk.css.map": "/projects/17-sd-017-project-starwars-planets-search/static/css/main.55d66a38.chunk.css.map",
+    "static/js/2.f5fb32fe.chunk.js.LICENSE.txt": "/projects/17-sd-017-project-starwars-planets-search/static/js/2.f5fb32fe.chunk.js.LICENSE.txt",
+    "static/media/starwars1.png": "/projects/17-sd-017-project-starwars-planets-search/static/media/starwars1.0cf7e1d8.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1299341e.js",
+    "static/js/2.f5fb32fe.chunk.js",
+    "static/css/main.55d66a38.chunk.css",
+    "static/js/main.9cc7c26c.chunk.js"
+  ]
+}
